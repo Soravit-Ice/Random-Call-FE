@@ -1,6 +1,5 @@
 {
   "name": "rvc-web",
-  "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite --host",
