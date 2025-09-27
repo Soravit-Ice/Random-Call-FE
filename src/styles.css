@@ -1,0 +1,381 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    --primary: #6366f1;
+    --primary-light: #818cf8;
+    --primary-dark: #4f46e5;
+    --accent: #06b6d4;
+    --accent-light: #22d3ee;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --error: #ef4444;
+    --surface: rgba(255, 255, 255, 0.05);
+    --surface-hover: rgba(255, 255, 255, 0.1);
+    --border: rgba(255, 255, 255, 0.1);
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #64748b;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    @apply font-sans text-slate-100 antialiased;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+
+  #root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* App Shell */
+  .app-shell {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .app-header {
+    @apply flex items-center justify-between p-4 border-b border-white/10;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(20px);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  .brand {
+    @apply flex flex-col;
+  }
+
+  .brand-title {
+    @apply text-xl font-bold text-white;
+    background: linear-gradient(135deg, var(--primary-light), var(--accent-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .brand-subtitle {
+    @apply text-sm text-slate-400;
+  }
+
+  .nav-links {
+    @apply flex items-center gap-2 flex-wrap;
+  }
+
+  .nav-links button {
+    @apply px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200;
+    @apply text-slate-300 hover:text-white hover:bg-white/10;
+    @apply whitespace-nowrap;
+  }
+
+  .nav-links button.active {
+    @apply text-white bg-gradient-to-r from-indigo-500 to-cyan-500;
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+  }
+
+  .app-main {
+    @apply flex-1 p-4;
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  /* Panels */
+  .panel {
+    @apply p-8 rounded-2xl border border-white/10;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  .panel h2 {
+    @apply text-2xl font-bold mb-2 text-white;
+  }
+
+  .hint {
+    @apply text-slate-400 mb-6 leading-relaxed;
+  }
+
+  /* Forms */
+  .form-grid {
+    @apply space-y-4;
+  }
+
+  .auth-form {
+    @apply max-w-md mx-auto mt-8;
+  }
+
+  input, textarea {
+    @apply w-full px-4 py-3 rounded-xl border border-white/10;
+    @apply bg-white/5 text-white placeholder-slate-400;
+    @apply focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent;
+    @apply transition-all duration-200;
+  }
+
+  input:focus, textarea:focus {
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.5);
+  }
+
+  label {
+    @apply block text-sm font-medium text-slate-300 mb-2;
+  }
+
+  .section-title {
+    @apply text-lg font-semibold text-white mb-2;
+  }
+
+  /* Buttons */
+  .btn {
+    @apply px-6 py-3 rounded-xl font-medium text-white;
+    @apply bg-gradient-to-r from-indigo-500 to-cyan-500;
+    @apply hover:from-indigo-600 hover:to-cyan-600;
+    @apply focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-slate-900;
+    @apply transition-all duration-200 transform hover:scale-105;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none;
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 rounded-xl font-medium text-slate-300;
+    @apply bg-white/10 hover:bg-white/20;
+    @apply border border-white/20 hover:border-white/30;
+    @apply focus:outline-none focus:ring-2 focus:ring-white/50;
+    @apply transition-all duration-200;
+  }
+
+  .btn-ghost {
+    @apply px-4 py-2 rounded-lg font-medium text-slate-300;
+    @apply hover:text-white hover:bg-white/10;
+    @apply transition-all duration-200;
+  }
+
+  .btn-danger {
+    @apply px-6 py-3 rounded-xl font-medium text-white;
+    @apply bg-gradient-to-r from-red-500 to-pink-500;
+    @apply hover:from-red-600 hover:to-pink-600;
+    @apply focus:outline-none focus:ring-2 focus:ring-red-500;
+    @apply transition-all duration-200;
+    box-shadow: 0 4px 20px rgba(239, 68, 68, 0.3);
+  }
+
+  /* Status Messages */
+  .status-banner {
+    @apply p-4 rounded-xl border;
+    @apply bg-cyan-500/10 border-cyan-500/20 text-cyan-300;
+  }
+
+  .status-banner.error {
+    @apply bg-red-500/10 border-red-500/20 text-red-300;
+  }
+
+  .muted-note {
+    @apply text-sm text-slate-500 text-center;
+  }
+
+  /* Feed */
+  .feed-grid {
+    @apply space-y-4;
+  }
+
+  .feed-card {
+    @apply p-6 rounded-xl border border-white/10;
+    @apply bg-white/5 hover:bg-white/10;
+    @apply transition-all duration-200;
+  }
+
+  .feed-card header {
+    @apply flex items-center justify-between mb-3;
+  }
+
+  .feed-card header strong {
+    @apply text-white font-semibold;
+  }
+
+  .feed-card header span {
+    @apply text-sm text-slate-400;
+  }
+
+  .feed-card p {
+    @apply text-slate-300 mb-4 leading-relaxed;
+  }
+
+  .feed-card footer {
+    @apply flex items-center gap-4 text-sm text-slate-400;
+  }
+
+  /* Call Interface */
+  .call-card {
+    @apply text-center max-w-lg mx-auto;
+  }
+
+  .call-partner {
+    @apply text-2xl font-bold text-white mb-2;
+  }
+
+  .call-status {
+    @apply text-slate-400 mb-8;
+  }
+
+  .call-actions {
+    @apply space-y-6 mb-8;
+  }
+
+  .call-controls {
+    @apply flex items-center justify-center gap-4 flex-wrap;
+  }
+
+  .timer {
+    @apply text-lg font-mono text-slate-300 px-4 py-2 rounded-lg bg-white/10;
+  }
+
+  /* Volume Slider */
+  .slider-field {
+    @apply flex items-center gap-4 text-slate-300;
+  }
+
+  input[type="range"] {
+    @apply flex-1 h-2 cursor-pointer rounded-full bg-white/15;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-light), var(--accent-light));
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, var(--primary-light), var(--accent-light));
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+    cursor: pointer;
+  }
+
+  /* Chat */
+  .chat-wrapper {
+    @apply max-w-2xl mx-auto;
+  }
+
+  .chat-timeline {
+    @apply h-96 overflow-y-auto space-y-3 mb-6 p-4 rounded-xl bg-white/5;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+  }
+
+  .chat-timeline::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .chat-timeline::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .chat-timeline::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+  }
+
+  .chat-bubble {
+    @apply max-w-xs p-3 rounded-2xl;
+    @apply bg-white/10 text-slate-200;
+  }
+
+  .chat-bubble.self {
+    @apply ml-auto bg-gradient-to-r from-indigo-500 to-cyan-500 text-white;
+  }
+
+  .chat-bubble span {
+    @apply block mb-1;
+  }
+
+  .chat-bubble time {
+    @apply text-xs opacity-70;
+  }
+
+  .chat-composer {
+    @apply flex gap-3;
+  }
+
+  .chat-composer input {
+    @apply flex-1;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .app-header {
+      @apply flex-col gap-4;
+    }
+
+    .nav-links {
+      @apply w-full justify-center;
+    }
+
+    .app-main {
+      @apply p-2;
+    }
+
+    .panel {
+      @apply p-4;
+    }
+
+    .call-controls {
+      @apply flex-col gap-3;
+    }
+
+    .chat-timeline {
+      @apply h-64;
+    }
+  }
+
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  .panel {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .status-banner {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  /* Loading States */
+  .btn:disabled {
+    animation: pulse 2s infinite;
+  }
+}
